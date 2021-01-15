@@ -1,2 +1,3 @@
 # TestTecnico
-Repositorio para Test Tecnico
+Bienvenidos al Repositorio para Test Tecnico de InitiumSoft
+Autor: Diego Yandun
