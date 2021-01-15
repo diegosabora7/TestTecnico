@@ -10,3 +10,7 @@ y la cola 2 tiene una duración de 3 min. El sistema elige en cual de las dos co
 - Al momento de recuperar la data se desea visualizar las personas que fueron atendidas y las que estan siendo atendidas.
 
 - Nota: Se debe cambiar la cadena de conexión de la base, ya que esta configurada con una base remota.
+
+- Ejecutar el script con nombre dbticket.sql
+
+- El sistema web fue desarrollado en .Net Framework
