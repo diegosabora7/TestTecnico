@@ -1,5 +1,5 @@
-# TestTecnico Initium Soft
-Bienvenidos al Repositorio para el Test Técnico de InitiumSoft  
+# TestTecnico Initium Sofware
+Bienvenidos al Repositorio para el Test Técnico de InitiumSoftware  
 
 - Autor: Diego Yandun
 
