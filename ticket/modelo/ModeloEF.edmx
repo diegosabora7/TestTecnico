@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ModeloEF.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tcliente">
+          <Key>
+            <PropertyRef Name="idCliente" />
+          </Key>
+          <Property Name="idCliente" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tcola">
+          <Key>
+            <PropertyRef Name="idCola" />
+          </Key>
+          <Property Name="idCola" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="tiempo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tcoladetalle">
+          <Key>
+            <PropertyRef Name="idCola" />
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="idCola" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ColaColaDetalle">
+          <End Role="tcola" Type="Self.tcola" Multiplicity="1" />
+          <End Role="tcoladetalle" Type="Self.tcoladetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tcola">
+              <PropertyRef Name="idCola" />
+            </Principal>
+            <Dependent Role="tcoladetalle">
+              <PropertyRef Name="idCola" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModeloEFStoreContainer">
+          <EntitySet Name="tcliente" EntityType="Self.tcliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tcola" EntityType="Self.tcola" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tcoladetalle" EntityType="Self.tcoladetalle" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ColaColaDetalle" Association="Self.FK_ColaColaDetalle">
+            <End Role="tcola" EntitySet="tcola" />
+            <End Role="tcoladetalle" EntitySet="tcoladetalle" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ModeloEF" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="contextoTicket" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tcliente" EntityType="ModeloEF.tcliente" />
+          <EntitySet Name="tcola" EntityType="ModeloEF.tcola" />
+          <EntitySet Name="tcoladetalle" EntityType="ModeloEF.tcoladetalle" />
+          <AssociationSet Name="FK_ColaColaDetalle" Association="ModeloEF.FK_ColaColaDetalle">
+            <End Role="tcola" EntitySet="tcola" />
+            <End Role="tcoladetalle" EntitySet="tcoladetalle" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tcliente">
+          <Key>
+            <PropertyRef Name="idCliente" />
+          </Key>
+          <Property Name="idCliente" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tcola">
+          <Key>
+            <PropertyRef Name="idCola" />
+          </Key>
+          <Property Name="idCola" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="tiempo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tcoladetalle" Relationship="ModeloEF.FK_ColaColaDetalle" FromRole="tcola" ToRole="tcoladetalle" />
+        </EntityType>
+        <EntityType Name="tcoladetalle">
+          <Key>
+            <PropertyRef Name="idCola" />
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="idCola" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tcola" Relationship="ModeloEF.FK_ColaColaDetalle" FromRole="tcoladetalle" ToRole="tcola" />
+        </EntityType>
+        <Association Name="FK_ColaColaDetalle">
+          <End Type="ModeloEF.tcola" Role="tcola" Multiplicity="1" />
+          <End Type="ModeloEF.tcoladetalle" Role="tcoladetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tcola">
+              <PropertyRef Name="idCola" />
+            </Principal>
+            <Dependent Role="tcoladetalle">
+              <PropertyRef Name="idCola" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModeloEFStoreContainer" CdmEntityContainer="contextoTicket">
+          <EntitySetMapping Name="tcliente">
+            <EntityTypeMapping TypeName="ModeloEF.tcliente">
+              <MappingFragment StoreEntitySet="tcliente">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tcola">
+            <EntityTypeMapping TypeName="ModeloEF.tcola">
+              <MappingFragment StoreEntitySet="tcola">
+                <ScalarProperty Name="tiempo" ColumnName="tiempo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idCola" ColumnName="idCola" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tcoladetalle">
+            <EntityTypeMapping TypeName="ModeloEF.tcoladetalle">
+              <MappingFragment StoreEntitySet="tcoladetalle">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idCola" ColumnName="idCola" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
