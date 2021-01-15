@@ -14,7 +14,8 @@ namespace WebApi.Colas
         int idCola;
         [ThreadStatic]
         public static contextoTicket db;
-       public Cola(int id)
+
+        public Cola(int id)
         {
             idCola = id;
             contextoTicket conCola = new contextoTicket();
@@ -22,17 +23,31 @@ namespace WebApi.Colas
 
             Session.fijarContextoTicket(conCola);
         }
+        /// <summary>
+        /// Encola el elemento de acuerdo al id de cola y al identificador del cliente 
+        /// dependiendo del tiempo de definicion de cada cola
+        /// </summary>
+        /// <param name="idCola"></param>
+        /// <param name="milisegundos"></param>
         public void encolar(int idCola, int milisegundos)
         {
             //Atendiendo
             Thread.Sleep(milisegundos);
         }
+        /// <summary>
+        /// Desencola los elementos de acuerdo al id de cola y al identificador del cliente
+        /// </summary>
+        /// <param name="idCola"></param>
+        /// <param name="id"></param>
         public void desencolar(int idCola, int id)
         {
             tcoladetalle coladetalle = TColaDetalleDal.buscar(idCola, id);
             db.tcoladetalle.Remove(coladetalle);
             db.SaveChanges();
         }
+        /// <summary>
+        /// Procesa todos los registros que se guardaron en cada cola
+        /// </summary>
         public void procesar()
         {
           Session.fijarContextoTicket(Cola.db);

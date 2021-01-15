@@ -22,6 +22,11 @@ namespace WebApi.Controllers
         private contextoTicket db = new contextoTicket();
         bool procesando = false;
 
+        /// <summary>
+        /// Registra la informacion del cliente y verifica si esque se esta ejecutandose la cola
+        /// </summary>
+        /// <param name="tcliente"></param>
+        /// <returns></returns>
         [Route("registrar")]
         public IHttpActionResult registrar([FromBody] tcliente tcliente)
         {
@@ -56,12 +61,19 @@ namespace WebApi.Controllers
         }
        
 
-        
+        /// <summary>
+        /// Trae el identificador de la cola que etsa disponible
+        /// </summary>
+        /// <returns></returns>
         public int validar()
         {
             int nCola = TColaDetalleDal.validar();
             return nCola;
         }
+        /// <summary>
+        /// Procesa las colas en paralelo
+        /// </summary>
+        /// <returns></returns>
         public string Get()
         {           
 

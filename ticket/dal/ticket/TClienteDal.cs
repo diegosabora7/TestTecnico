@@ -10,6 +10,11 @@ namespace dal.ticket
 {
    public static class TClienteDal
     {
+        /// <summary>
+        /// Busca un cliente por la identificación
+        /// </summary>
+        /// <param name="idCliente"></param>
+        /// <returns></returns>
         public static tcliente buscar(int idCliente)
         {
             contextoTicket _contextoTicket = Session.getTicketContexto();
