@@ -1,0 +1,65 @@
+﻿div {
+    margin: 0px auto;
+    font-size: 18px;
+    font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+table {
+    background-color: #f1f1f1;
+    padding: 25px;
+    border-top: 5px solid #ca1b2d;
+    padding: 30px 18px 20px 18px;
+}
+
+h1 {
+    color: rgba(202,27,45,1.00);
+    text-align: center;
+}
+
+p {
+    font-size: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: #28c1e8;
+    font-weight: bold;
+}
+
+.titles {
+    text-align: right;
+}
+
+.typebox {
+    border-radius: 5px;
+    height: 30px;
+    border: 0px;
+    font-size: 18px;
+    padding-left: 8px;
+}
+
+.total {
+    width: 100%;
+    position: relative;
+}
+
+btn {
+    color: white;
+    background-color: rgba(202,27,45,1.00);
+}
+
+.totalbtn {
+    height: 30px;
+}
+
+#hidden-results {
+    display: block;
+    margin-top: 20px;
+}
+
+#total-revenue-lost {
+    display: block;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px 11px 6px 14px;
+}

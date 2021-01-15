@@ -9,6 +9,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 </head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript">
    
@@ -44,35 +46,43 @@
         });
      });
 
+    
+
 </script>
 <body>
-   
-    <h1>Registro</h1>
-<form>
-    <table border="1">
-        <tr>
-            <td> ID :</td>
-            <td>
-               
-                <input id="idCliente" type="number" name="idCliente" />
-            </td>
-        </tr>
-        <tr>
-            <td>Nombre :</td>
-            <td><input id="nombre" type="text" name="nombre" /></td>
-        </tr>
-     
-        
-        <tr>
-            <td colspan="2">
-                <input type="button" id="insert" 
-                       value="Ingresar" />
-              
-            </td>
-        </tr>
-    </table>
-    <br />
-    <div id="msg"></div>
-</form>
+<div>
+  <h1 style="text-align:center">Registro de datos para atención al Cliente</h1>
+  <form>
+    <table cellpadding="10px;" align="center">
+    <thead colspan="2">
+    </thead>
+    
+    <!-- value 1-->
+
+    <tbody>
+      <tr>
+        <td class="titles">Id<span style="color:rgba(202,27,45,1.00);">*</span></td>
+        <td><input type="text" name="idCliente" id="idCliente" class="auto typebox" ></td>
+      </tr>
+      
+      <!--value 2-->
+      <tr>
+        <td class="titles">Nombre<span style="color:rgba(202,27,45,1.00);">*</span></td>
+        <td><input type="text" name="nombre" id="nombre" data-a-sign="$" class="auto typebox"></td>
+      </tr>
+      
+      <!--buttons-->
+      <tr>
+        <td colspan="1"><input type="submit" id="insert" value="Guardar"  class="total totalbtn typebox" style="height:30px; fontsize:18px; color:white; background-color:rgba(202,27,45,1.00);"></td>
+       
+      </tr>
+      
+          </tbody>
+  </table>
+      </form>
+</div>
+<div id="hidden-results" style="margin-top:50px;display:none;">
+  </div>
+    
 </body>
 </html>
